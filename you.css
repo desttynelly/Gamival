@@ -1,0 +1,105 @@
+body{
+    background-color: blueviolet;
+    font-size: 20px;
+    font-family: "raleway", sans-serif;
+    transition: all 0.5s ease-in-out;
+}
+body.active{
+    background-color: white;
+}
+
+.bnt{
+    color: white;
+    background-color: blue;
+    width: 300px;
+    height: 150px;
+    margin-left: 500px;
+    font-weight: 600;
+    border: none;
+    box-shadow: 1px 1px 20px -0px black;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 30px;
+}
+
+.cont{
+    background-color: red;
+    height: 400px;
+}
+
+.bagg{
+    margin-top: 100px;
+    height: 500px;
+    background-size: cover;
+    background-image: url(assets/remote.jpg);
+    width: 1300px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.bagg::-webkit-scrollbar{
+    display: none;
+}
+
+.bag{
+
+}
+
+
+
+
+.bag .purple{
+
+    height: 300px;
+    background-color: blue;
+}
+
+
+.bag .blue{
+
+    height: 500px;
+    margin-top: 100px;
+    background-color: purple;
+}
+
+
+
+
+
+
+
+.top-slid{
+    height: 400px;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 100px;
+    /* transform: translateX(1200px); */
+    display: none;
+    transition: all 0.5s ease-in-out;
+}
+.top-slid.active{
+    display: block;
+}
+@keyframes move{
+    0%{
+        margin-left: 1300px;
+    }
+    100%{
+        margin-left: 0px;
+    }
+}
+.top-slid .slide{
+    width: 200%;
+    height: 100%;
+    /* background-color: red; */
+    margin-left: 2700px;
+    animation: move 10s infinite;
+}
+.top-slid .slide div{
+    float: left;
+    background-color: blue;
+    width: 12%;
+    margin-left: 30px;
+    margin-bottom: 10px;
+    height: 100%;
+}
