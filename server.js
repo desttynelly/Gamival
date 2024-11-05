@@ -44,6 +44,10 @@ app.get('/ticketpage',(req,res)=>{
     res.render('ticketpage')
 });
 
+app.get('/404',(req,res)=>{
+    res.render('404')
+});
+
 app.listen(port,()=>{
 
     console.log(`Server up and running at http://localhost:${port}/`);

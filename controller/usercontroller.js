@@ -93,7 +93,7 @@ const signUp = async (req, res) => {
       const { fullname, phoneNumber, IGhandle, tickettype, yourcode} = req.body;
   
       if (!fullname || !phoneNumber || !IGhandle || !tickettype || !yourcode) {
-        return res.status(400).json({ status: "Failed", message: "Please fill out all fields." });
+        res.render("404", {user: req.session.user})
       }
   
       let imageURL = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
@@ -173,8 +173,7 @@ const signUp = async (req, res) => {
             // });
             
         } catch (error) {
-            console.error('Error saving product:', error);
-                res.status(500).send('Error saving product');
+          res.render("404", {user: req.session.user})
         }
       }
   
@@ -188,7 +187,7 @@ const signUp = async (req, res) => {
   
       // Handle errors and ensure only one response
       if (!res.headersSent) {
-        res.status(500).json({ status: "Failed", message: error.message });
+        res.render("404", {user: req.session.user})
       }
     }
 
