@@ -196,6 +196,24 @@ const signUp = async (req, res) => {
  
 };
 
+// // Check if code has been used
+// const checkCode = async (req, res) => {
+//     try {
+//         const { code } = req.body; // get the code sent from the frontend
+//         const existingUser = await User.findOne({ yourcode: code });
+
+//         if (existingUser) {
+//             return res.json({ status: "error", message: "Code already used" });
+//         } else {
+//             res.json({ status: "success", message: "Code is available" });
+//         }
+//     } catch (error) {
+//         console.error("Error checking code:", error);
+//         res.status(500).json({ status: "error", message: "Internal server error" });
+//     }
+// };
+
+
 
 
 module.exports =

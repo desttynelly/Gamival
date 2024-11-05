@@ -135,6 +135,12 @@
       color: #b22222;
     }
 
+    #goo{
+      display: none;
+    }
+    #goo.active{
+      display: block;
+    }
     .form-group input[type="submit"] {
       background-color: #b22222;
       color: white;
@@ -241,15 +247,65 @@ function generateTicketCode() {
           let ant = document.getElementById('fcode').innerHTML = code;
           console.log(ant)
          
-        }
+}
 
 
 
-    document.getElementById("getcode").addEventListener("click", function(){
+
+document.getElementById("getcode").addEventListener("click", function(){
+  
+      
       event.preventDefault();
-      document.getElementById('codeDisplay').classList.add("active");
+      document.getElementById('goo').classList.add("active");
       generateTicketCode();
     })
+
+
+
+
+    // Event listener for "Register" button to validate the code
+    document.getElementById("goo").addEventListener("click", function(event) {
+        // Get the generated code and the code entered by the user
+        const generatedCode = document.getElementById('fcode').innerText;
+        const enteredCode = document.getElementById('codeDisplay').value;
+
+        // Check if the entered code matches the generated code
+        if (enteredCode !== generatedCode) {
+            event.preventDefault(); // Stop form submission if codes don’t match
+            window.location = "200"
+        }
+    });
+
+
+
+// document.getElementById("goo").addEventListener("click", async function(event) {
+    
+
+//     const code = document.getElementById("codeDisplay").value;
+
+//     // Send code to the backend to check if it has been used
+//     const response = await fetch("/check-code", {
+//         method: "POST",
+//         headers: {
+//             "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify({ code }),
+//     });
+
+//     const data = await response.json();
+
+//     if (data.status === "error") {
+//         window.alert(data.message); // Alert if the code is already used
+//     } else {
+//         document.getElementById("registrationForm").submit(); // Proceed with form submission
+//     }
+// });
+
+
+
+
+
+ 
 
 
     

@@ -8,6 +8,8 @@ const authRoutes = require("./routes/userroutes")
 const bodyparser = require("body-parser")
 const cors = require("cors")
 const session = require("express-session")
+const User = require("./model/usermodel");
+
 
 
 
@@ -34,6 +36,11 @@ app.use(session({
 
 
 
+
+
+
+
+
 app.use('/api/auth', authRoutes)
 
 app.get('/',(req,res)=>{
@@ -46,6 +53,10 @@ app.get('/ticketpage',(req,res)=>{
 
 app.get('/404',(req,res)=>{
     res.render('404')
+});
+
+app.get('/200',(req,res)=>{
+    res.render('200')
 });
 
 app.listen(port,()=>{
