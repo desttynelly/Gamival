@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/images/Gamival logo.png">
+  <title>GALAZ ENTERTAINMENT</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    /* Basic Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: #f0f8ff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      color: #333;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #b22222;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .event-info {
+      text-align: center;
+      background: #8b0000;
+      color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 700px;
+      width: 100%;
+      margin-bottom: 30px;
+    }
+
+    .event-info p {
+      font-size: 1rem;
+      margin: 10px 0;
+    }
+
+    .highlight {
+      color: #FFD700;
+      font-weight: bold;
+    }
+
+    /* Form Styling */
+    .registration-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      padding: 30px;
+      max-width: 700px;
+      width: 100%;
+    }
+
+    .registration-form h2 {
+      font-size: 1.8rem;
+      color: #8b0000;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      width: 100%;
+    }
+
+    .form-group label {
+      font-size: 1rem;
+      color: #333;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 10px;
+      font-size: 0.9rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f8f9fa;
+      transition: border 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      border-color: #8b0000;
+      outline: none;
+    }
+
+    #getcode {
+      width: 100%;
+      height: 40px;
+      background-color: #b22222;
+      color: white;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+      border: none;
+      margin-top: 20px;
+    }
+    #codeDisplay{
+      width: 100%;
+      margin-top: 10px;
+      height: 50px;
+      text-align: center;
+      font-size: 20px;
+      outline: none;
+    }
+    #codeDisplay::placeholder{
+      font-size: 15px;
+    }
+    #allfcode{
+      margin-top: 10px;
+      font-size: 20px;
+      color: #b22222;
+    }
+    #fcode{
+      margin-top: 10px;
+      font-size: 20px;
+      color: #b22222;
+    }
+
+    .form-group input[type="submit"] {
+      background-color: #b22222;
+      color: white;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      border: none;
+      margin-top: 20px;
+    }
+
+    .form-group input[type="submit"]:hover {
+      background-color: #8b0000;
+    }
+
+    /* Message Section */
+    .success-message {
+      text-align: center;
+      margin-top: 20px;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: #f5f5f5;
+      color: #333;
+      font-size: 1.2rem;
+      font-weight: bold;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      display: none;
+    }
+
+    /* Code Display */
+    .ticket-code-display {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      color: #8b0000;
+      font-weight: bold;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Gamival 6.0 - Christmas Edition</h1>
+
+  <!-- Event Info Section -->
+  <div class="event-info">
+    <p><span class="highlight">Date:</span> Sunday, 15th December</p>
+    <p><span class="highlight">Time:</span> 1 PM</p>
+    <p><span class="highlight">Location:</span> Playzone Arena, Garki Abuja</p>
+    <p><span class="highlight">Tickets:</span> Regular ₦5,000 | VIP ₦20,000 | Tables ₦300,000/₦500,000</p>
+  </div>
+
+  <!-- Registration Form -->
+  <div class="registration-container">
+    <div class="registration-form">
+      <h2>Register for Your Ticket</h2>
+      <form id="registrationForm" method="post" action="http://localhost:3700/api/auth/index">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" name="fullname" id="name" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="text" name="phoneNumber" id="phone" required>
+        </div>
+        <div class="form-group">
+          <label for="IGhandle">Instagram Handle</label>
+          <input type="text" name="IGhandle" id="IGhandle" required>
+        </div>
+        <div class="form-group">
+          <label for="ticket-type">Ticket Type</label>
+          <select id="ticket-type" name="tickettype" required>
+            <option value="regular">Regular - ₦5,000</option>
+            <option value="vip">VIP - ₦20,000</option>
+            <option value="table">Table - ₦300,000 / ₦500,000</option>
+          </select>
+        </div>
+
+        <div class="get-code">
+        <button id="getcode">Get Registeration Code</button>
+
+        <p id="allfcode">Here is your Registration code: <span id="fcode"></span></p>
+
+        <input type="text" name="yourcode" id="codeDisplay" placeholder="Type in your Registeration code here" />
+      </div>
+
+        <div class="form-group">
+          <input type="submit" value="Register" id="goo">
+        </div>
+      </form>
+    
+    </div>
+  </div>
+
+   <!-- Footer -->
+   <footer style=" font-family: 'Poppins', sans-serif; font-size: 16px; margin-top: 5px; color: #000;">
+    <p>&copy; 2018 GALAZ ENTERTAINMENT | All rights reserved</p>
+  </footer>
+
+  <script>
+
+
+function generateTicketCode() {
+            const code = Math.floor(10000 + Math.random() * 90000).toString();
+          let ant = document.getElementById('fcode').innerHTML = code;
+          console.log(ant)
+         
+        }
+
+
+
+    document.getElementById("getcode").addEventListener("click", function(){
+      event.preventDefault();
+      document.getElementById('codeDisplay').classList.add("active");
+      generateTicketCode();
+    })
+
+
+    
+  </script>
+
+</body>
+</html>

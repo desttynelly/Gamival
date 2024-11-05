@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/images/Gamival logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>GALAZ ENTERTAINMENT</title>
+    <style>
+        /* Basic reset */
+        * {
+            font-family: "poppins", sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        h1 {
+      font-size: 2.5rem;
+      color: #b22222;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+        /* Responsive container */
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            background-color: #b22222;
+            text-align: center;
+        }
+
+        /* Text styling */
+        p {
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        /* Responsive text sizing */
+        .highlight {
+      color: #FFD700;
+      font-weight: bold;
+    }
+        #success {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        #text1{
+            font-size: 1rem;
+            color: #fff;
+        }
+        #gid {
+            font-size: 1rem;
+            font-size: 30px;
+            font-weight: 600;
+            color: greenyellow;
+        }
+        #copyy{
+            margin-left: 80%;
+            margin-top: -50px;
+            cursor: pointer;
+            color: #333;
+            font-size: 20px;
+            width: 30px;
+            padding: 5px;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+        #copyy.active{
+            width: 80px;
+        }
+        #copyy .fa-solid{
+            display: block;
+        }
+        #copyy .fa-solid.active{
+            display: none;
+        }
+        #copyy #span1{
+            display: none;
+        }
+        #copyy #span1.active{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Gamival 6.0 - Christmas Edition</h1>
+    <div class="container">
+        <p id="success" class="highlight">Ticket generated successfully</p>
+        <p id="text1">Your ticket was generated successfully. Here is your ticket ID to verify yourself.</p>
+        <p id="gid"><%= user.yourcode %></p>
+
+        <p id="copyy" >
+            <i class="fa-solid fa-copy"></i>
+             <span id="span1">copied</span></p>
+    </div>
+
+
+    <script>
+          function copyToClipboard() {
+            const textToCopy = document.getElementById('gid').innerText;
+            
+            // Copy text to clipboard
+            navigator.clipboard.writeText(textToCopy)
+              
+        }
+        document.querySelector(".fa-solid").addEventListener("click", function(){
+            copyToClipboard();
+        
+
+        document.querySelector("#copyy").classList.add("active")
+        document.querySelector(".fa-solid").classList.add("active")
+        document.querySelector("#span1").classList.add("active")
+
+       setTimeout (() => {     
+
+        document.querySelector("#copyy").classList.remove("active")
+        document.querySelector(".fa-solid").classList.remove("active")
+        document.querySelector("#span1").classList.remove("active")
+        }, 1000 )
+        
+        
+        })
+    </script>
+</body>
+</html>
