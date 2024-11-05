@@ -271,7 +271,7 @@ document.getElementById("getcode").addEventListener("click", function(){
 
         // Check if the entered code matches the generated code
         if (enteredCode !== generatedCode) {
-            // event.preventDefault(); // Stop form submission if codes don’t match
+            event.preventDefault(); // Stop form submission if codes don’t match
             window.location = "200"
         }
     });
